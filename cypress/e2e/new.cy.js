@@ -93,7 +93,7 @@ describe('First', () => {
             .should('contains', 'checked')
     })
 
-    it.only('assert property (after selecting date)', () => {
+    it('assert property (after selecting date)', () => {
         cy.visit('/')
         cy.get('.menu-title').contains('Form').click();
         cy.get('a[title="Datepicker"]').should('have.text','Datepicker').click();
@@ -107,5 +107,13 @@ describe('First', () => {
             cy.get('.day-cell').contains('15').click()
             cy.wrap(input).invoke('prop', 'value').should('contain', 'Jan 15, 2017')
         })
+    })
+
+    it.only('radio button check and checked', () => {
+        cy.visit('/')
+        cy.get('.menu-title').contains('Form').click();
+        cy.get('a[title="Form Layouts"]').should('have.text','Form Layouts').click();
+
+        cy.contains('nb-card', 'Using the Grid').find('[type="radio"]')
     })
 })
